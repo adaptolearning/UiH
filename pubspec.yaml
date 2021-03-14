@@ -1,6 +1,6 @@
 name: uih
-description: A new Flutter package project.
-version: 0.1.0
+description: UiH ( Ui Helper ) is a flutter / dart utility package created to help people improve ui consistency throughout the multiple platform respective to the Ui Design and various hardware factor in real time.
+version: 0.1.1
 homepage: https://packages.prodevplus.com/uih
 
 environment:
