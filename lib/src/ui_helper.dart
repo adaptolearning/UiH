@@ -30,7 +30,29 @@ class UiH {
     }
   }
 
-  // Get the proportionate height as per the screen size
+  /// Get the proportionate SizedBox with Height as per the screen size. [horizontalSpacer]
+  /// [multiplyBy] is an optional value which is `1` by default and when this param
+  /// is passed, the [horizontalSpacer] value will be `multiplied` by it.
+  /// Example : `{int multiplyBy: 2}` will give a value of `20` if `default width`
+  /// is `10` as per the `formula` for consistancy.
+  /// [NOTE] : `Negative` values will be automatically converted to `Positive` values for [multiplyBy] option.
+  static Widget horizontalSpacer({int multiplyBy: 1}) => SizedBox(
+      height: getProportionateScreenWidth(UiH.screenWidth) *
+          0.01 *
+          multiplyBy.abs());
+
+  /// Get the proportionate SizedBox with Height as per the screen size. [verticalSpacer]
+  /// [multiplyBy] is an optional value which is `1` by default and when this param
+  /// is passed, the [verticalSpacer] value will be `multiplied` by it.
+  /// Example : `{int multiplyBy: 2}` will give a value of `20` if `default height`
+  /// is `10` as per the `formula` for consistancy.
+  /// [NOTE] : `Negative` values will be automatically converted to `Positive` values for [multiplyBy] option.
+  static Widget verticalSpacer({int multiplyBy: 1}) => SizedBox(
+      height: getProportionateScreenHeight(UiH.screenHeight) *
+          0.01 *
+          multiplyBy.abs());
+
+  /// Get the proportionate height as per the screen size [getProportionateScreenHeight]
   static double getProportionateScreenHeight(double inputHeight) {
     double screenHeight = UiH.screenHeight;
     return (inputHeight / UiH.constHeight) * screenHeight;
@@ -42,4 +64,3 @@ class UiH {
     return (inputWidth / UiH.constWidth) * screenWidth;
   }
 } // end-size-util-class
-
