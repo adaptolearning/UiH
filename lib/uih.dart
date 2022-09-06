@@ -1,3 +1,3 @@
 library uih;
 
-export 'package:uih/src/ui_helper.dart';
+export './src/extensions.dart';
