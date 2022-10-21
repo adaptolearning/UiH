@@ -1,4 +1,4 @@
-## [1.0.0] - 2022-09-07 Release
+## [1.0.0] - 2022-10-21 Release
 * Task: removed old code implementation.
 * Task: added extension-based implementation.
 * Task: added example.
