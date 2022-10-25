@@ -1,3 +1,8 @@
+## [1.0.1] - 2022-10-25 Release
+* Task: added bool identifiers such as `isMobile`, `isTablet`, and `isDesktop`.
+* Task: added example.
+* Task: version bumped to 1.0.1.
+
 ## [1.0.0] - 2022-10-21 Release
 * Task: removed old code implementation.
 * Task: added extension-based implementation.
