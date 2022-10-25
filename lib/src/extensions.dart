@@ -82,4 +82,13 @@ extension uih on BuildContext {
   /// [NOTE] : `Negative` values will be automatically converted to `Positive` values for [multiplyBy] option.
   Widget verticalSpacer({int multiplyBy: 1}) => SizedBox(
       height: relativeScreenHeight(heightPx) * 0.01 * multiplyBy.abs());
+
+  /// width below [650] can be considered as mobile platform
+  bool get isMobile => mq.size.width < 650;
+
+  /// width in between [650] and [1100] can be considered as tablet platform
+  bool get isTablet => mq.size.width < 1100 && mq.size.width >= 650;
+
+  /// width above [1100] can be considered as desktop platform
+  bool get isDesktop => mq.size.width >= 1100;
 }
