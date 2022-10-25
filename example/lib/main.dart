@@ -17,7 +17,7 @@ class Demo extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "What Platform Resolution are we currently?:\n\n"
+                  "What Platform Resolution are we currently in?:\n\n"
                   "Mobile   :${context.isMobile} \n\n"
                   "Tablet   :${context.isTablet} \n\n"
                   "Desktop :${context.isDesktop} \n\n\n\n"
