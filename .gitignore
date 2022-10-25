@@ -135,3 +135,9 @@ app.*.map.json
 
 # Custom Files
 report.txt
+
+example/macos/Flutter/GeneratedPluginRegistrant.swift
+example/pubspec.lock
+example/windows/flutter/generated_plugin_registrant.cc
+example/windows/flutter/generated_plugin_registrant.h
+pubspec.lock
