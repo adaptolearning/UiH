@@ -1,3 +1,7 @@
+### [1.0.3] - 2022-10-26 Release
+* Task: Scaffold Messenger section Supporting `showSnackBar`.
+* Task: added example.
+* Task: version bumped to 1.0.3.
 ### [1.0.2] - 2022-10-26 Release
 * Task: Theme section added with current variables as following : `theme`, `backgroundColor`, `typography`, `brightness`.
 * Task: added example.
