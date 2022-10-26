@@ -1,6 +1,7 @@
-### [1.0.2] - 2022-10-25 Release
+### [1.0.2] - 2022-10-26 Release
 * Task: Theme section added with current variables as following : `theme`, `backgroundColor`, `typography`, `brightness`.
 * Task: added example.
+* Task: .pubignore introduced.
 * Task: version bumped to 1.0.2.
 ### [1.0.1] - 2022-10-25 Release
 * Task: added bool identifiers such as `isMobile`, `isTablet`, and `isDesktop`.
