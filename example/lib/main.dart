@@ -85,6 +85,16 @@ class Demo extends StatelessWidget {
                     const Text('Texting horizontal spacer'),
                   ],
                 ),
+                TextButton.icon(
+                    onPressed: () {
+                      context.showSnackBar(const SnackBar(
+                          content: Text('Snackbar example!'),
+                          duration: Duration(seconds: 5)));
+                    },
+                    icon: const Icon(
+                      Icons.podcasts,
+                    ),
+                    label: const Text('Snackbar in context')),
               ],
             ),
           ),

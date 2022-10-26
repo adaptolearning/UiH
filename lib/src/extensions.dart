@@ -104,4 +104,8 @@ extension uih on BuildContext {
 
   /// Return `Theme` based [brightness]
   Brightness get brightness => theme.brightness;
+
+  // Scaffold Message Section
+  showSnackBar(SnackBar child) =>
+      ScaffoldMessenger.of(this).showSnackBar(child);
 }
