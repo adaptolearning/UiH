@@ -50,7 +50,11 @@ class Demo extends StatelessWidget {
                   "Relative Conversion to Screen Width from default size (${context.widthPx}):\n"
                   "${context.relativeScreenWidth(context.widthPx)}\n\n"
                   "Relative Conversion to Screen height from default size (${context.heightPx}):\n"
-                  "${context.relativeScreenHeight(context.heightPx)}\n\n",
+                  "${context.relativeScreenHeight(context.heightPx)}\n\n"
+                  "Theme based background color is : "
+                  "${context.backgroundColor.toString()}\n\n"
+                  "Theme based brightness color is : "
+                  "${context.brightness.toString()}\n\n",
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

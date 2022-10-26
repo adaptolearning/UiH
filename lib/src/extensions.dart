@@ -91,4 +91,17 @@ extension uih on BuildContext {
 
   /// width above [1100] can be considered as desktop platform
   bool get isDesktop => mq.size.width >= 1100;
+
+  // Theme Section
+  /// Return Theme.of(context) instance
+  ThemeData get theme => Theme.of(this);
+
+  /// Return `Theme` based [backgroundColor]
+  Color get backgroundColor => theme.backgroundColor;
+
+  /// Return `Theme` based [typography]
+  Typography get typography => theme.typography;
+
+  /// Return `Theme` based [brightness]
+  Brightness get brightness => theme.brightness;
 }
