@@ -1,3 +1,9 @@
+### [1.0.4] - 2023-05-31 Release
+* Task: added `RelativeFontSize` functionality.
+* Task: added `RelativeFontSizeWithBreakPoint` functionality.
+* Task: updated example.
+* Task: added initial unit_test for future reference.
+* Task: version bumped to 1.0.4.
 ### [1.0.3] - 2022-10-26 Release
 * Task: Scaffold Messenger section Supporting `showSnackBar`.
 * Task: added example.
