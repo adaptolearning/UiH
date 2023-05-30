@@ -8,6 +8,50 @@ class Demo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final data = [
+      "What Platform Resolution are we currently in?:\n\n"
+          "Mobile   :${context.isMobile} \n"
+          "Tablet   :${context.isTablet} \n"
+          "Desktop :${context.isDesktop} \n",
+      "Is Screen in Landscape mode:\n\n"
+          "${context.isLandscape} \n",
+      "Device Size in pixel values:\n\n"
+          "${context.sizePx}\n",
+      "Device default Screen width size in pixels:\n\n"
+          "${context.widthPx}\n",
+      "Device default Screen height size in pixels:\n\n"
+          "${context.heightPx}\n",
+      "Device Screen diagonal size in pixels:\n\n"
+          "${context.diagonalPx}\n",
+      "Device default Screen width size:\n\n"
+          "${context.sizeInches}\n",
+      "Device Screen width inches:\n\n"
+          "${context.widthInches}\n",
+      "Device Screen height in inches:\n\n"
+          "${context.heightInches}\n",
+      "Device Screen diagonal size in inches:\n\n"
+          "${context.diagonalInches}\n",
+      "Converting width size from fraction in percentage:\n\n"
+          "${context.widthPct(.1)}\n",
+      "Converting height size from fraction in percentage:\n\n"
+          "${context.heightPct(.1)}\n",
+      "Device Screen size in Inches:\n\n"
+          "${context.sizeInches}\n",
+      "Default Padding form Media Query:\n\n"
+          "${context.mq.padding}\n",
+      "Relative Conversion to Screen Width from default size (${context.widthPx}):\n\n"
+          "${context.relativeScreenWidth(context.widthPx)}\n",
+      "Relative Conversion to Screen height from default size (${context.heightPx}):\n\n"
+          "${context.relativeScreenHeight(context.heightPx)}\n",
+      "Relative Conversion of Screen Font Size (12):\n\n"
+          "${context.relativeFontSize(12)}\n",
+      "Relative Conversion of Screen Font Size based on Break Point (12):\n\n"
+          "${context.relativeFontSizeWithBreakPoint(12)}\n",
+      "Theme based background color is : "
+          "${context.backgroundColor.toString()}\n",
+      "Theme based brightness color is : "
+          "${context.brightness.toString()}\n",
+    ];
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -16,46 +60,69 @@ class Demo extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "What Platform Resolution are we currently in?:\n\n"
-                  "Mobile   :${context.isMobile} \n\n"
-                  "Tablet   :${context.isTablet} \n\n"
-                  "Desktop :${context.isDesktop} \n\n\n\n"
-                  "Is Screen in Landscape mode:\n"
-                  "${context.isLandscape} \n\n"
-                  "Device Size in pixel values:\n"
-                  "${context.sizePx}\n\n"
-                  "Device default Screen width size in pixels:\n"
-                  "${context.widthPx}\n\n"
-                  "Device default Screen height size in pixels:\n"
-                  "${context.heightPx}\n\n"
-                  "Device Screen diagonal size in pixels:\n"
-                  "${context.diagonalPx}\n\n"
-                  "Device default Screen width size:\n"
-                  "${context.sizeInches}\n\n"
-                  "Device Screen width inches:\n"
-                  "${context.widthInches}\n\n"
-                  "Device Screen height in inches:\n"
-                  "${context.heightInches}\n\n"
-                  "Device Screen diagonal size in inches:\n"
-                  "${context.diagonalInches}\n\n"
-                  "Converting width size from fraction in percentage:\n"
-                  "${context.widthPct(.1)}\n\n"
-                  "Converting height size from fraction in percentage:\n"
-                  "${context.heightPct(.1)}\n\n"
-                  "Device Screen size in Inches:\n"
-                  "${context.sizeInches}\n\n"
-                  "Default Padding form Media Query:\n"
-                  "${context.mq.padding}\n\n"
-                  "Relative Conversion to Screen Width from default size (${context.widthPx}):\n"
-                  "${context.relativeScreenWidth(context.widthPx)}\n\n"
-                  "Relative Conversion to Screen height from default size (${context.heightPx}):\n"
-                  "${context.relativeScreenHeight(context.heightPx)}\n\n"
-                  "Theme based background color is : "
-                  "${context.backgroundColor.toString()}\n\n"
-                  "Theme based brightness color is : "
-                  "${context.brightness.toString()}\n\n",
-                ),
+                ...data.map((e) => Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.all(20),
+                      margin: EdgeInsets.only(
+                          bottom: context.relativeScreenHeight(10)),
+                      child: Text(
+                        e,
+                        style: TextStyle(
+                          fontSize: context.relativeFontSize(12),
+                        ),
+                      ),
+                    )),
+                // Text(
+                //   "What Platform Resolution are we currently in?:\n\n"
+                //   "Mobile   :${context.isMobile} \n"
+                //   "Tablet   :${context.isTablet} \n"
+                //   "Desktop :${context.isDesktop} \n\n"
+                //   "Is Screen in Landscape mode:\n\n"
+                //   "${context.isLandscape} \n"
+                //   "Device Size in pixel values:\n\n"
+                //   "${context.sizePx}\n"
+                //   "Device default Screen width size in pixels:\n\n"
+                //   "${context.widthPx}\n"
+                //   "Device default Screen height size in pixels:\n\n"
+                //   "${context.heightPx}\n"
+                //   "Device Screen diagonal size in pixels:\n\n"
+                //   "${context.diagonalPx}\n"
+                //   "Device default Screen width size:\n\n"
+                //   "${context.sizeInches}\n"
+                //   "Device Screen width inches:\n\n"
+                //   "${context.widthInches}\n"
+                //   "Device Screen height in inches:\n\n"
+                //   "${context.heightInches}\n"
+                //   "Device Screen diagonal size in inches:\n\n"
+                //   "${context.diagonalInches}\n"
+                //   "Converting width size from fraction in percentage:\n\n"
+                //   "${context.widthPct(.1)}\n"
+                //   "Converting height size from fraction in percentage:\n\n"
+                //   "${context.heightPct(.1)}\n"
+                //   "Device Screen size in Inches:\n\n"
+                //   "${context.sizeInches}\n"
+                //   "Default Padding form Media Query:\n\n"
+                //   "${context.mq.padding}\n"
+                //   "Relative Conversion to Screen Width from default size (${context.widthPx}):\n\n"
+                //   "${context.relativeScreenWidth(context.widthPx)}\n"
+                //   "Relative Conversion to Screen height from default size (${context.heightPx}):\n\n"
+                //   "${context.relativeScreenHeight(context.heightPx)}\n"
+                //   "Relative Conversion of Screen Font Size (12):\n\n"
+                //   "${context.relativeFontSize(12)}\n"
+                //   "Relative Conversion of Screen Font Size based on Break Point (12):\n\n"
+                //   "${context.relativeFontSizeWithBreakPoint(12)}\n"
+                //   "Theme based background color is : "
+                //   "${context.backgroundColor.toString()}\n"
+                //   "Theme based brightness color is : "
+                //   "${context.brightness.toString()}\n",
+                //   style: TextStyle(
+                //     fontSize: context.relativeFontSize(12),
+                //   ),
+                // ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -137,7 +204,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
