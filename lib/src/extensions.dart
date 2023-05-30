@@ -143,7 +143,7 @@ extension uih on BuildContext {
   /// Example : `{int multiplyBy: 2}` will give a value of `20` if `default width`
   /// is `10` as per the `formula` for consistency.
   /// [NOTE] : `Negative` values will be automatically converted to `Positive` values for [multiplyBy] option.
-  Widget horizontalSpacer({int multiplyBy = 1}) {
+  SizedBox horizontalSpacer({int multiplyBy = 1}) {
     final widthPx = 10.0; // Replace with your desired width in pixels
     final width = relativeScreenWidth(widthPx) * 0.01 * multiplyBy.abs();
     return SizedBox(width: width);
@@ -155,7 +155,7 @@ extension uih on BuildContext {
   /// Example : `{int multiplyBy: 2}` will give a value of `20` if `default height`
   /// is `10` as per the `formula` for consistency.
   /// [NOTE] : `Negative` values will be automatically converted to `Positive` values for [multiplyBy] option.
-  Widget verticalSpacer({int multiplyBy = 1}) {
+  SizedBox verticalSpacer({int multiplyBy = 1}) {
     final heightPx = 10.0; // Replace with your desired height in pixels
     final height = relativeScreenHeight(heightPx) * 0.01 * multiplyBy.abs();
     return SizedBox(height: height);
