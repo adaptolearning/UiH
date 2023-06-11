@@ -174,6 +174,12 @@ extension uih on BuildContext {
   /// Return Theme.of(context) instance
   ThemeData get theme => Theme.of(this);
 
+  /// Return `TextTheme` instance from `Theme.of(context)`
+  TextTheme get textTheme => theme.textTheme;
+
+  /// Return `ColorScheme` instance from `Theme.of(context)`
+  ColorScheme get colorScheme => theme.colorScheme;
+
   /// Return `Theme` based [backgroundColor]
   Color get backgroundColor => theme.colorScheme.background;
 
@@ -183,7 +189,19 @@ extension uih on BuildContext {
   /// Return `Theme` based [brightness]
   Brightness get brightness => theme.brightness;
 
-  // Scaffold Message Section
+  /// Return `ScaffoldMessengerState` instance from `ScaffoldMessenger.of(context)`
   showSnackBar(SnackBar child) =>
       ScaffoldMessenger.of(this).showSnackBar(child);
+
+  ///Return Navigator.of(context) instance
+  NavigatorState get navigator => Navigator.of(this);
+
+  /// Return FocusScope.of(context) instance
+  FocusScopeNode get focusScope => FocusScope.of(this);
+
+  /// Return Scaffold.of(context) instance
+  ScaffoldState get scaffold => Scaffold.of(this);
+
+  /// Return DefaultTextStyle.of(context) instance
+  DefaultTextStyle get defaultTextStyle => DefaultTextStyle.of(this);
 }
