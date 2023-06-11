@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:uih/src/extensions.dart';
+import 'package:uih/src/context_ext.dart';
 import 'package:mockito/mockito.dart';
 
 void main() {
