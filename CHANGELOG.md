@@ -11,6 +11,8 @@
 * Task: added `string_ext` as separate file and exported it to introduce `isEmail`, `containsIgnoreCase`, `toCamelCase`, `capitalize`, and `reverse`.
 * Task: added `double_ext` as separate file and exported it to introduce `roundToDecimalPlaces`, `toPercentage`, `isInteger`, `toRadians`, `toDegrees`, and `formatDecimalPlaces`.
 * Task: added `iterable_ext` as separate file and exported it to introduce `IterableExtensions`, and `MaterialStateHelpers`.
+* Task: `UiH` Logo introduced.
+* Task: `README.md` updated.
 * Task: version bumped to `1.0.5`.
 
 ### [1.0.4] - 2023-05-31 Release
