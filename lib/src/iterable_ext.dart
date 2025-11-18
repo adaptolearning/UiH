@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-extension WidgetStateHelpers on Iterable<WidgetState> {
+extension UihWidgetStateExtension on Iterable<WidgetState> {
   bool get isHovered => contains(WidgetState.hovered);
   bool get isFocused => contains(WidgetState.focused);
   bool get isPressed => contains(WidgetState.pressed);
@@ -11,6 +11,6 @@ extension WidgetStateHelpers on Iterable<WidgetState> {
   bool get isError => contains(WidgetState.error);
 }
 
-extension IterableExtensions on Iterable {
+extension UihIterableExtension on Iterable {
   bool containsAny(Iterable<Object?> other) => other.any((e) => contains(e));
 }

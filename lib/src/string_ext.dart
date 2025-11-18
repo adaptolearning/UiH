@@ -1,4 +1,4 @@
-extension uihString on String {
+extension UihStringExtension on String {
   /// return true if string is email
   bool isEmail() {
     final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
@@ -7,13 +7,13 @@ extension uihString on String {
 
   /// return true if string contains value
   bool containsIgnoreCase(String value) {
-    return this.toLowerCase().contains(value.toLowerCase());
+    return toLowerCase().contains(value.toLowerCase());
   }
 
   /// return camel case string
   String toCamelCase() {
-    final words = this.split(' ');
-    if (words.length == 1) return this.toLowerCase();
+    final words = split(' ');
+    if (words.length == 1) return toLowerCase();
     final result = words[0].toLowerCase() +
         words.sublist(1).map((word) {
           return word[0].toUpperCase() + word.substring(1).toLowerCase();

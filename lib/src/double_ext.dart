@@ -1,7 +1,9 @@
-extension uihDouble on double {
+import 'dart:math';
+
+extension UihDoubleExtension on double {
   /// return rounded double value
   double roundToDecimalPlaces(int decimalPlaces) {
-    final mod = 10.0 * decimalPlaces;
+    final mod = pow(10.0, decimalPlaces);
     return ((this * mod).round().toDouble() / mod);
   }
 
@@ -17,16 +19,16 @@ extension uihDouble on double {
 
   /// return a to radians value
   double toRadians() {
-    return this * (3.141592653589793238 / 180);
+    return this * (pi / 180);
   }
 
   /// return a to degrees value
   double toDegrees() {
-    return this * (180 / 3.141592653589793238);
+    return this * (180 / pi);
   }
 
   /// Returns a string representation of this double with the given number of
   String formatDecimalPlaces(int decimalPlaces) {
-    return this.toStringAsFixed(decimalPlaces);
+    return toStringAsFixed(decimalPlaces);
   }
 }

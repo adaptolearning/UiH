@@ -1,4 +1,4 @@
-extension uihInt on int {
+extension UihIntExtension on int {
   /// Returns a list of integers from 0 to this - 1
   void times(Function(int) f) {
     for (var i = 0; i < this; i++) {
