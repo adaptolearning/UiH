@@ -24,7 +24,8 @@ import 'context_ext.dart';
 import 'uih_config.dart' show Uih, UihInit, UihNotInitializedException;
 
 /// Helper function to throw initialization exception with Never return type
-Never _throwNotInitialized(String contextFreeMethod, String contextBasedMethod) {
+Never _throwNotInitialized(
+    String contextFreeMethod, String contextBasedMethod) {
   throw UihNotInitializedException(
     'UiH has not been initialized!\n\n'
     'Please wrap your app with UihInit (recommended):\n\n'
@@ -216,7 +217,6 @@ extension UihNumericExtension on num {
     return (toDouble() / baseWidth) * screenWidth;
   }
 
-
   /// Context-free relative height - requires [Uih.init] to be called first
   ///
   /// Returns height scaled to screen size without requiring a BuildContext.
@@ -241,7 +241,6 @@ extension UihNumericExtension on num {
     final baseHeight = Uih.designHeight;
     return (toDouble() / baseHeight) * screenHeight;
   }
-
 
   /// Context-free scaled font size - requires [Uih.init] to be called first
   ///
@@ -279,7 +278,6 @@ extension UihNumericExtension on num {
 
     return scaledSize;
   }
-
 
   /// Context-free adaptive font size - requires [Uih.init] to be called first
   ///
@@ -329,7 +327,6 @@ extension UihNumericExtension on num {
     return scaledSize;
   }
 
-
   /// Context-free width fraction - requires [Uih.init] to be called first
   ///
   /// Returns a fraction of screen width (0.0 to 1.0) without requiring a BuildContext.
@@ -360,7 +357,6 @@ extension UihNumericExtension on num {
     return toDouble() * Uih.screenWidth;
   }
 
-
   /// Context-free height fraction - requires [Uih.init] to be called first
   ///
   /// Returns a fraction of screen height (0.0 to 1.0) without requiring a BuildContext.
@@ -390,7 +386,6 @@ extension UihNumericExtension on num {
     );
     return toDouble() * Uih.screenHeight;
   }
-
 
   // ============================================================================
   // CONTEXT-BASED METHODS (Original API - Backward Compatible)

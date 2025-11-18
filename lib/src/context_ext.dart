@@ -317,7 +317,8 @@ extension UihBuildContextExtension on BuildContext {
   /// Returns true if screen width is between 600dp and 840dp (tablets)
   ///
   /// Based on Material Design 3 breakpoints
-  bool get isTablet => mediaQuery.size.width >= 600 && mediaQuery.size.width < 840;
+  bool get isTablet =>
+      mediaQuery.size.width >= 600 && mediaQuery.size.width < 840;
 
   /// Returns true if screen width is 840dp or above (desktop)
   ///

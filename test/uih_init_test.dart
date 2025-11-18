@@ -84,7 +84,8 @@ void main() {
       expect(Uih.designHeight, 812.0);
     });
 
-    testWidgets('Context-free extensions should work after UihInit', (tester) async {
+    testWidgets('Context-free extensions should work after UihInit',
+        (tester) async {
       // Reset UiH state before test
       Uih.reset();
 
@@ -165,7 +166,8 @@ void main() {
   });
 
   group('Error Handling Tests', () {
-    testWidgets('Should throw UihNotInitializedException when not initialized', (tester) async {
+    testWidgets('Should throw UihNotInitializedException when not initialized',
+        (tester) async {
       // Reset UiH state
       Uih.reset();
 

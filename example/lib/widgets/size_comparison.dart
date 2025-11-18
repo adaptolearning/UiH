@@ -40,8 +40,9 @@ class SizeComparison extends StatelessWidget {
               width: normalWidth,
               height: 40,
               decoration: BoxDecoration(
-                color: context.colorScheme.surfaceContainerHighest
-                    .withValues(alpha: 0.5),
+                color: context.colorScheme.surfaceContainerHighest.withValues(
+                  alpha: 0.5,
+                ),
                 border: Border.all(
                   color: context.colorScheme.outline,
                   width: 2,

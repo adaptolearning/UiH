@@ -132,7 +132,7 @@ Add UiH to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  uih: ^2.0.0
+  uih: ^1.0.6
 ```
 
 Then run:

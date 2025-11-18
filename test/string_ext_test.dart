@@ -86,7 +86,8 @@ void main() {
       test('should convert multiple words to camelCase', () {
         expect('hello world'.toCamelCase(), equals('helloWorld'));
         expect('the quick brown fox'.toCamelCase(), equals('theQuickBrownFox'));
-        expect('convert to camel case'.toCamelCase(), equals('convertToCamelCase'));
+        expect('convert to camel case'.toCamelCase(),
+            equals('convertToCamelCase'));
       });
 
       test('should handle two words', () {
@@ -143,7 +144,8 @@ void main() {
 
       test('should only capitalize first letter', () {
         expect('hello world'.capitalize(), equals('Hello world'));
-        expect('the quick brown fox'.capitalize(), equals('The quick brown fox'));
+        expect(
+            'the quick brown fox'.capitalize(), equals('The quick brown fox'));
       });
 
       test('should handle special characters at start', () {

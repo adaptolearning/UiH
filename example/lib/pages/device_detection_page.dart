@@ -85,7 +85,10 @@ class DeviceDetectionPage extends StatelessWidget {
                     ),
                     SizedBox(width: 8.w),
                     Expanded(
-                      child: AdaptiveBox('Layout', context.colorScheme.tertiary),
+                      child: AdaptiveBox(
+                        'Layout',
+                        context.colorScheme.tertiary,
+                      ),
                     ),
                   ],
                 ),

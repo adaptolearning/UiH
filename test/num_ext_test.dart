@@ -330,8 +330,7 @@ void main() {
         expect(desktopResult, closeTo(19.2, 0.01)); // 16 * 1.2
       });
 
-      testWidgets('adaptiveFont() should be an alias for af()',
-          (tester) async {
+      testWidgets('adaptiveFont() should be an alias for af()', (tester) async {
         double? afResult;
         double? adaptiveFontResult;
 
@@ -383,8 +382,7 @@ void main() {
         expect(result, closeTo(207.0, 0.01));
       });
 
-      testWidgets('wf() should calculate percentage correctly',
-          (tester) async {
+      testWidgets('wf() should calculate percentage correctly', (tester) async {
         double? halfResult;
         double? quarterResult;
         double? fullResult;
@@ -452,8 +450,7 @@ void main() {
         expect(result, closeTo(448.0, 0.01));
       });
 
-      testWidgets('hf() should calculate percentage correctly',
-          (tester) async {
+      testWidgets('hf() should calculate percentage correctly', (tester) async {
         double? halfResult;
         double? quarterResult;
         double? fullResult;

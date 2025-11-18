@@ -29,15 +29,10 @@ class AdaptiveFontComparison extends StatelessWidget {
         children: [
           // Header with font size
           Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 16.w,
-              vertical: 12.h,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
             decoration: BoxDecoration(
               color: colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(11),
-              ),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(11)),
             ),
             child: Row(
               children: [
@@ -102,7 +97,9 @@ class AdaptiveFontComparison extends StatelessWidget {
             sampleText: 'Sample Text',
             fontSize: adaptiveSize,
             textColor: colorScheme.primary,
-            backgroundColor: colorScheme.primaryContainer.withValues(alpha: 0.15),
+            backgroundColor: colorScheme.primaryContainer.withValues(
+              alpha: 0.15,
+            ),
             labelColor: colorScheme.primary,
             isHighlighted: true,
           ),
@@ -137,10 +134,7 @@ class _ComparisonSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 16.w,
-        vertical: 14.h,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: isHighlighted
@@ -164,10 +158,7 @@ class _ComparisonSection extends StatelessWidget {
               ),
               SizedBox(width: 8.w),
               Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 6.w,
-                  vertical: 2.h,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 2.h),
                 decoration: BoxDecoration(
                   color: labelColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(4),

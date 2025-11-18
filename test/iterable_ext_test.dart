@@ -42,10 +42,7 @@ void main() {
       });
 
       test('should work with multiple states including focused', () {
-        final states = <WidgetState>{
-          WidgetState.focused,
-          WidgetState.pressed
-        };
+        final states = <WidgetState>{WidgetState.focused, WidgetState.pressed};
         expect(states.isFocused, isTrue);
       });
     });
@@ -95,10 +92,7 @@ void main() {
       });
 
       test('should work with multiple states including selected', () {
-        final states = <WidgetState>{
-          WidgetState.selected,
-          WidgetState.hovered
-        };
+        final states = <WidgetState>{WidgetState.selected, WidgetState.hovered};
         expect(states.isSelected, isTrue);
       });
     });
@@ -127,10 +121,7 @@ void main() {
       });
 
       test('should work with multiple states including disabled', () {
-        final states = <WidgetState>{
-          WidgetState.disabled,
-          WidgetState.focused
-        };
+        final states = <WidgetState>{WidgetState.disabled, WidgetState.focused};
         expect(states.isDisabled, isTrue);
       });
     });

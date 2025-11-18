@@ -143,7 +143,8 @@ void main() {
 
       test('should be inverse of toRadians', () {
         const testDegrees = 45.0;
-        expect(testDegrees.toRadians().toDegrees(), closeTo(testDegrees, 0.000001));
+        expect(testDegrees.toRadians().toDegrees(),
+            closeTo(testDegrees, 0.000001));
       });
     });
 
