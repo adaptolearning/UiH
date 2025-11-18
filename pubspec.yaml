@@ -1,6 +1,6 @@
 name: uih
 description: A Flutter utility package providing responsive UI helpers, MediaQuery extensions, and platform-specific sizing utilities for consistent cross-platform layouts.
-version: 1.0.5
+version: 1.0.6
 homepage: https://github.com/adaptolearning/UiH
 repository: https://github.com/adaptolearning/UiH
 issue_tracker: https://github.com/adaptolearning/UiH/issues
@@ -22,4 +22,3 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^5.4.1
