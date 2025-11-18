@@ -1,7 +1,16 @@
 name: uih
-description: UiH ( Ui Helper ) is a flutter / dart utility package created to help people improve ui consistency throughout the multiple platform respective to the Ui Design and various hardware factor in real time. Access MediaQuery sizing info directly on the context, also adds some helper methods for sizing and layout.
+description: A Flutter utility package providing responsive UI helpers, MediaQuery extensions, and platform-specific sizing utilities for consistent cross-platform layouts.
 version: 1.0.5
-homepage: https://packages.adaptolearning.com/uih
+homepage: https://github.com/adaptolearning/UiH
+repository: https://github.com/adaptolearning/UiH
+issue_tracker: https://github.com/adaptolearning/UiH/issues
+
+topics:
+  - responsive
+  - ui-helper
+  - extensions
+  - mediaquery
+  - flutter-ui
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -14,5 +23,3 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.4.1
-
-flutter:

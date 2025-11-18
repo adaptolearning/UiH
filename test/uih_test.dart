@@ -5,30 +5,30 @@ import 'package:mockito/mockito.dart';
 
 void main() {
   group('uih extension', () {
-    test('relativeScreenHeight should return correct height', () {
+    test('relativeHeight should return correct height', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
-      mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(mq.size).thenReturn(const Size(400, 800));
+      when(MediaQuery.of(context)).thenReturn(mq);
 
       final inputHeight = 100.0;
-      final expectedHeight = 44.642857142857146;
+      final expectedHeight = (inputHeight / 896.0) * 800; // (100 / 896) * 800 = 89.28...
 
-      final result = context.relativeScreenHeight(inputHeight);
+      final result = context.relativeHeight(inputHeight);
 
-      expect(result, equals(expectedHeight));
+      expect(result, closeTo(expectedHeight, 0.01));
     });
 
-    test('relativeScreenWidth should return correct width', () {
+    test('relativeWidth should return correct width', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final inputWidth = 100.0;
       final expectedWidth = 24.154589371980676;
 
-      final result = context.relativeScreenWidth(inputWidth);
+      final result = context.relativeWidth(inputWidth);
 
       expect(result, equals(expectedWidth));
     });
@@ -38,178 +38,179 @@ void main() {
 
       final result = context.pixelsPerInch;
 
-      expect(result, equals(96));
+      // Test environment defaults to mobile platform (Android/iOS)
+      expect(result, equals(150.0));
     });
 
-    test('sizePoints should return correct size', () {
+    test('sizeInPoints should return correct size', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedSize = Size(3.125, 6.25);
 
-      final result = context.sizePoints;
+      final result = context.sizeInPoints;
 
       expect(result, equals(expectedSize));
     });
 
-    test('diagonalPoints should return correct value', () {
+    test('diagonalInPoints should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedDiagonal = 894.4271909999159;
 
-      final result = context.diagonalPoints;
+      final result = context.diagonalInPoints;
 
       expect(result, equals(expectedDiagonal));
     });
 
-    test('relativeFontSize should return correct size', () {
+    test('scaledFontSize should return correct size', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final inputFontSize = 16.0;
       final expectedFontSize = 18.0;
 
-      final result = context.relativeFontSize(inputFontSize);
+      final result = context.scaledFontSize(inputFontSize);
 
       expect(result, equals(expectedFontSize));
     });
 
-    test('relativeFontSizeWithBreakPoint should return correct size', () {
+    test('adaptiveFontSize should return correct size', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final inputFontSize = 16.0;
       final expectedFontSize = 19.2;
 
-      final result = context.relativeFontSizeWithBreakPoint(inputFontSize);
+      final result = context.adaptiveFontSize(inputFontSize);
 
       expect(result, equals(expectedFontSize));
     });
 
-    test('sizeInches should return correct size', () {
+    test('sizeInInches should return correct size', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedSize = Size(1.0416666666666667, 2.0833333333333335);
 
-      final result = context.sizeInches;
+      final result = context.sizeInInches;
 
       expect(result, equals(expectedSize));
     });
 
-    test('diagonalPx should return correct value', () {
+    test('diagonalInPixels should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedDiagonal = 894.4271909999159;
 
-      final result = context.diagonalPx;
+      final result = context.diagonalInPixels;
 
       expect(result, equals(expectedDiagonal));
     });
 
-    test('widthPx should return correct value', () {
+    test('widthInPixels should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedWidth = 400.0;
 
-      final result = context.widthPx;
+      final result = context.widthInPixels;
 
       expect(result, equals(expectedWidth));
     });
 
-    test('heightPx should return correct value', () {
+    test('heightInPixels should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedHeight = 800.0;
 
-      final result = context.heightPx;
+      final result = context.heightInPixels;
 
       expect(result, equals(expectedHeight));
     });
 
-    test('widthInches should return correct value', () {
+    test('widthInInches should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedWidth = 3.125;
 
-      final result = context.widthInches;
+      final result = context.widthInInches;
 
       expect(result, equals(expectedWidth));
     });
 
-    test('heightInches should return correct value', () {
+    test('heightInInches should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedHeight = 6.25;
 
-      final result = context.heightInches;
+      final result = context.heightInInches;
 
       expect(result, equals(expectedHeight));
     });
 
-    test('diagonalInches should return correct value', () {
+    test('diagonalInInches should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final expectedDiagonal = 9.33134693877551;
 
-      final result = context.diagonalInches;
+      final result = context.diagonalInInches;
 
       expect(result, equals(expectedDiagonal));
     });
 
-    test('widthPct should return correct value', () {
+    test('widthFraction should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final fraction = 0.5;
       final expectedWidth = 200.0;
 
-      final result = context.widthPct(fraction);
+      final result = context.widthFraction(fraction);
 
       expect(result, equals(expectedWidth));
     });
 
-    test('heightPct should return correct value', () {
+    test('heightFraction should return correct value', () {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final fraction = 0.5;
       final expectedHeight = 400.0;
 
-      final result = context.heightPct(fraction);
+      final result = context.heightFraction(fraction);
 
       expect(result, equals(expectedHeight));
     });
@@ -218,7 +219,7 @@ void main() {
     //   final context = MockBuildContext();
     //   final mq = MockMediaQueryData();
     //   mq.orientation = Orientation.landscape;
-    //   when(context.mq).thenReturn(mq);
+    //   when(context.mediaQuery).thenReturn(mq);
     //   ) as MockMediaQueryData;
     //   final result = context.isLandscape;
 
@@ -249,7 +250,7 @@ void main() {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(400, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final result = context.isMobile;
 
@@ -260,7 +261,7 @@ void main() {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(800, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final result = context.isTablet;
 
@@ -271,7 +272,7 @@ void main() {
       final context = MockBuildContext();
       final mq = MockMediaQueryData();
       mq.copyWith(size: Size(1200, 800));
-      when(context.mq).thenReturn(mq);
+      when(context.mediaQuery).thenReturn(mq);
 
       final result = context.isDesktop;
 
