@@ -1,600 +1,805 @@
 import 'package:flutter/material.dart';
 import 'package:uih/uih.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // NEW: Wrap your app with UihInit for automatic initialization!
-    // No need to call Uih.init(context) manually anymore!
+    // Wrap app with UihInit for context-free API support
     return UihInit(
-      designSize: const Size(414, 896), // Optional - matches your design dimensions
-      builder: (context) => const MaterialApp(
-        title: 'UiH Demo',
-        home: Demo(),
-      ),
-    );
-  }
-}
-
-// Alternative approach using MaterialApp.builder:
-// Uncomment this and comment out the above MyApp to try it
-/*
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'UiH Demo',
-      builder: Uih.builder(
-        designSize: const Size(414, 896),
-      ),
-      home: const Demo(),
-    );
-  }
-}
-*/
-
-class Demo extends StatelessWidget {
-  const Demo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final data = [
-      "What Platform Resolution are we currently in?:\n\n"
-          "Mobile   :${context.isMobile} \n"
-          "Tablet   :${context.isTablet} \n"
-          "Desktop :${context.isDesktop} \n",
-      "Is Screen in Landscape mode:\n\n"
-          "${context.isLandscape} \n",
-      "Device Size in pixel values:\n\n"
-          "${context.sizeInPixels}\n",
-      "Device default Screen width size in pixels:\n\n"
-          "${context.widthInPixels}\n",
-      "Device default Screen height size in pixels:\n\n"
-          "${context.heightInPixels}\n",
-      "Device Screen diagonal size in pixels:\n\n"
-          "${context.diagonalInPixels}\n",
-      "Device default Screen width size:\n\n"
-          "${context.sizeInInches}\n",
-      "Device Screen width inches:\n\n"
-          "${context.widthInInches}\n",
-      "Device Screen height in inches:\n\n"
-          "${context.heightInInches}\n",
-      "Device Screen diagonal size in inches:\n\n"
-          "${context.diagonalInInches}\n",
-      "Converting width size from fraction:\n\n"
-          "${context.widthFraction(.1)}\n",
-      "Converting height size from fraction:\n\n"
-          "${context.heightFraction(.1)}\n",
-      "Device Screen size in Inches:\n\n"
-          "${context.sizeInInches}\n",
-      "Default Padding form Media Query:\n\n"
-          "${context.mediaQuery.padding}\n",
-      "Relative Conversion to Screen Width from default size (${context.widthInPixels}):\n\n"
-          "${context.relativeWidth(context.widthInPixels)}\n",
-      "Relative Conversion to Screen height from default size (${context.heightInPixels}):\n\n"
-          "${context.relativeHeight(context.heightInPixels)}\n",
-      "Scaled Font Size (12):\n\n"
-          "${context.scaledFontSize(12)}\n",
-      "Adaptive Font Size based on Breakpoint (12):\n\n"
-          "${context.adaptiveFontSize(12)}\n",
-      "Theme based background color is : "
-          "${context.backgroundColor.toString()}\n",
-      "Theme based brightness color is : "
-          "${context.brightness.toString()}\n",
-      // NEW: Numeric Extension Examples
-      "=== NUMERIC EXTENSIONS DEMO ===\n",
-      "100.rw(context) = Relative Width:\n\n"
-          "${100.rw(context)}\n",
-      "100.rw(context) = Same as .rw() (alias):\n\n"
-          "${100.rw(context)}\n",
-      "50.rh(context) = Relative Height:\n\n"
-          "${50.rh(context)}\n",
-      "50.rh(context) = Same as .rh() (alias):\n\n"
-          "${50.rh(context)}\n",
-      "16.sf(context) = Scaled Font:\n\n"
-          "${16.sf(context)}\n",
-      "16.sf(context) = Same as .sf() (scaled pixel):\n\n"
-          "${16.sf(context)}\n",
-      "16.afc(context) = Adaptive Font:\n\n"
-          "${16.afc(context)}\n",
-      "0.5.wfc(context) = 50% Screen Width:\n\n"
-          "${0.5.wfc(context)}\n",
-      "0.3.hfc(context) = 30% Screen Height:\n\n"
-          "${0.3.hfc(context)}\n",
-    ];
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            // NEW: Context-free API (no context needed!)
-            padding: EdgeInsets.all(20.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // NEW: Initialization Approach Showcase
-                Container(
-                  width: 0.95.wf,
-                  padding: EdgeInsets.all(20.w),
-                  margin: EdgeInsets.only(bottom: 16.h),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.green.shade600, Colors.teal.shade600],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const Icon(Icons.check_circle, color: Colors.white, size: 28),
-                          SizedBox(width: 12.w),
-                          Expanded(
-                            child: Text(
-                              'No Manual Init Required!',
-                              style: TextStyle(
-                                fontSize: 22.sp,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 12.h),
-                      Text(
-                        'This app uses UihInit - automatic initialization with no manual Uih.init() calls needed!',
-                        style: TextStyle(fontSize: 14.sp, color: Colors.white70),
-                      ),
-                      SizedBox(height: 16.h),
-                      Container(
-                        padding: EdgeInsets.all(12.w),
-                        decoration: BoxDecoration(
-                          color: Colors.black26,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Before (Tedious):',
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                color: Colors.red.shade200,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              'Uih.init(context); // Every screen!',
-                              style: TextStyle(
-                                fontSize: 11.sp,
-                                color: Colors.white70,
-                                fontFamily: 'monospace',
-                              ),
-                            ),
-                            SizedBox(height: 12.h),
-                            Text(
-                              'After (Clean):',
-                              style: TextStyle(
-                                fontSize: 12.sp,
-                                color: Colors.green.shade200,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            SizedBox(height: 4.h),
-                            Text(
-                              'UihInit(builder: (ctx) => MaterialApp(...))',
-                              style: TextStyle(
-                                fontSize: 11.sp,
-                                color: Colors.white,
-                                fontFamily: 'monospace',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Hero section: Context-Free API Demo
-                Container(
-                  width: 0.95.wf, // Context-free!
-                  padding: EdgeInsets.all(20.w),
-                  margin: EdgeInsets.only(bottom: 16.h),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.purple.shade700, Colors.blue.shade700],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                    ),
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Context-Free API!',
-                        style: TextStyle(
-                          fontSize: 24.sp, // No context needed!
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                      ),
-                      SizedBox(height: 8.h),
-                      Text(
-                        'After calling Uih.init(context), you can use numeric extensions without context:',
-                        style: TextStyle(fontSize: 14.sp, color: Colors.white70),
-                      ),
-                      SizedBox(height: 12.h),
-                      Container(
-                        padding: EdgeInsets.all(12.w),
-                        decoration: BoxDecoration(
-                          color: Colors.black26,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '100.w    // Width (no context!)',
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                                color: Colors.white,
-                                fontFamily: 'monospace',
-                              ),
-                            ),
-                            Text(
-                              '50.h     // Height',
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                                color: Colors.white,
-                                fontFamily: 'monospace',
-                              ),
-                            ),
-                            Text(
-                              '14.sp    // Scaled pixel',
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                                color: Colors.white,
-                                fontFamily: 'monospace',
-                              ),
-                            ),
-                            Text(
-                              '0.5.wf   // 50% width',
-                              style: TextStyle(
-                                fontSize: 13.sp,
-                                color: Colors.white,
-                                fontFamily: 'monospace',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Comparison: Context-Free vs Context-Based
-                Container(
-                  width: 0.95.wf,
-                  padding: EdgeInsets.all(16.w),
-                  margin: EdgeInsets.only(bottom: 16.h),
-                  decoration: BoxDecoration(
-                    color: Colors.green.shade50,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.green.shade300, width: 2),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'API Comparison',
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green.shade900,
-                        ),
-                      ),
-                      SizedBox(height: 12.h),
-
-                      // Context-Free
-                      Text(
-                        'NEW: Context-Free',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.green.shade700,
-                        ),
-                      ),
-                      SizedBox(height: 4.h),
-                      Text(
-                        'Container(width: 100.w, height: 50.h)',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontFamily: 'monospace',
-                          color: Colors.black87,
-                        ),
-                      ),
-                      SizedBox(height: 12.h),
-
-                      // Context-Based
-                      Text(
-                        'OLD: Context-Based (still works)',
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.orange.shade700,
-                        ),
-                      ),
-                      SizedBox(height: 4.h),
-                      Text(
-                        'Container(width: 100.rw(context), height: 50.rh(context))',
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontFamily: 'monospace',
-                          color: Colors.black87,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Visual Demo: Both APIs produce same result
-                Container(
-                  width: 0.95.wf,
-                  padding: EdgeInsets.all(16.w),
-                  margin: EdgeInsets.only(bottom: 16.h),
-                  decoration: BoxDecoration(
-                    color: Colors.blue.shade50,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.blue, width: 2),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Visual Proof: Both APIs Work',
-                        style: TextStyle(
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue.shade900,
-                        ),
-                      ),
-                      SizedBox(height: 12.h),
-
-                      // Context-free example
-                      Row(
-                        children: [
-                          Container(
-                            width: 100.w, // Context-free!
-                            height: 50.h,
-                            color: Colors.purple.shade300,
-                            child: Center(
-                              child: Text(
-                                '100.w\n50.h',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 11.sp, color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 16.w),
-                          Expanded(
-                            child: Text(
-                              'Context-free: 100.w, 50.h',
-                              style: TextStyle(fontSize: 12.sp),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      SizedBox(height: 12.h),
-
-                      // Context-based example (same result)
-                      Row(
-                        children: [
-                          Container(
-                            width: 100.rw(context), // Context-based
-                            height: 50.rh(context),
-                            color: Colors.orange.shade300,
-                            child: Center(
-                              child: Text(
-                                '100.w(ctx)\n50.h(ctx)',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(fontSize: 11.sf(context), color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: 16.w),
-                          Expanded(
-                            child: Text(
-                              'Context-based: 100.rw(context), 50.rh(context)',
-                              style: TextStyle(fontSize: 12.sp),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                ...data.map((e) => Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      // DEMO: Using numeric extension instead of EdgeInsets.all(20)
-                      padding: EdgeInsets.all(20.rw(context)),
-                      // DEMO: Using numeric extension instead of context.relativeHeight(10)
-                      margin: EdgeInsets.only(bottom: 10.rh(context)),
-                      child: Text(
-                        e,
-                        style: TextStyle(
-                          // DEMO: Using .sp() instead of context.scaledFontSize(12)
-                          fontSize: 12.sf(context),
-                        ),
-                      ),
-                    )),
-                // Text(
-                //   "What Platform Resolution are we currently in?:\n\n"
-                //   "Mobile   :${context.isMobile} \n"
-                //   "Tablet   :${context.isTablet} \n"
-                //   "Desktop :${context.isDesktop} \n\n"
-                //   "Is Screen in Landscape mode:\n\n"
-                //   "${context.isLandscape} \n"
-                //   "Device Size in pixel values:\n\n"
-                //   "${context.sizePx}\n"
-                //   "Device default Screen width size in pixels:\n\n"
-                //   "${context.widthPx}\n"
-                //   "Device default Screen height size in pixels:\n\n"
-                //   "${context.heightPx}\n"
-                //   "Device Screen diagonal size in pixels:\n\n"
-                //   "${context.diagonalPx}\n"
-                //   "Device default Screen width size:\n\n"
-                //   "${context.sizeInches}\n"
-                //   "Device Screen width inches:\n\n"
-                //   "${context.widthInches}\n"
-                //   "Device Screen height in inches:\n\n"
-                //   "${context.heightInches}\n"
-                //   "Device Screen diagonal size in inches:\n\n"
-                //   "${context.diagonalInches}\n"
-                //   "Converting width size from fraction in percentage:\n\n"
-                //   "${context.widthPct(.1)}\n"
-                //   "Converting height size from fraction in percentage:\n\n"
-                //   "${context.heightPct(.1)}\n"
-                //   "Device Screen size in Inches:\n\n"
-                //   "${context.sizeInches}\n"
-                //   "Default Padding form Media Query:\n\n"
-                //   "${context.mq.padding}\n"
-                //   "Relative Conversion to Screen Width from default size (${context.widthPx}):\n\n"
-                //   "${context.relativeScreenWidth(context.widthPx)}\n"
-                //   "Relative Conversion to Screen height from default size (${context.heightPx}):\n\n"
-                //   "${context.relativeScreenHeight(context.heightPx)}\n"
-                //   "Relative Conversion of Screen Font Size (12):\n\n"
-                //   "${context.relativeFontSize(12)}\n"
-                //   "Relative Conversion of Screen Font Size based on Break Point (12):\n\n"
-                //   "${context.relativeFontSizeWithBreakPoint(12)}\n"
-                //   "Theme based background color is : "
-                //   "${context.backgroundColor.toString()}\n"
-                //   "Theme based brightness color is : "
-                //   "${context.brightness.toString()}\n",
-                //   style: TextStyle(
-                //     fontSize: context.relativeFontSize(12),
-                //   ),
-                // ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                        padding: const EdgeInsets.all(2),
-                        color: Colors.blue,
-                        child: context.verticalSpacer(multiplier: 1)),
-                    const Text('Texting vertical spacer'),
-                    Container(
-                        padding: const EdgeInsets.all(2),
-                        color: Colors.blue,
-                        child: context.verticalSpacer(multiplier: 10)),
-                  ],
-                ),
-                context.verticalSpacer(),
-                Row(
-                  children: [
-                    Container(
-                        padding: context.mediaQuery.padding,
-                        color: Colors.red,
-                        child: context.horizontalSpacer()),
-                    const Text('Texting horizontal spacer'),
-                    Container(
-                        padding: context.mediaQuery.padding,
-                        color: Colors.red,
-                        child: context.horizontalSpacer(multiplier: 2)),
-                    const Text('Texting horizontal spacer'),
-                  ],
-                ),
-                TextButton.icon(
-                    onPressed: () {
-                      context.showSnackBar(const SnackBar(
-                          content: Text('Snackbar example!'),
-                          duration: Duration(seconds: 5)));
-                    },
-                    icon: const Icon(
-                      Icons.podcasts,
-                    ),
-                    label: const Text('Snackbar in context')),
-              ],
-            ),
-          ),
+      designSize: const Size(414, 896), // iPhone 11 Pro Max design size
+      builder: (context) => MaterialApp(
+        title: 'UiH Example',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
+          useMaterial3: true,
         ),
+        darkTheme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.orange,
+            brightness: Brightness.dark,
+          ),
+          useMaterial3: true,
+        ),
+        themeMode: ThemeMode.system,
+        home: const HomePage(),
       ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  static const List<Widget> _pages = [
+    ResponsiveSizingPage(),
+    FontScalingPage(),
+    DeviceDetectionPage(),
+    ThemeIntegrationPage(),
+    ExtensionsShowcasePage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('UiH Package Demo'),
+        backgroundColor: context.colorScheme.primaryContainer,
       ),
-      body: Center(
+      body: _pages[_selectedIndex],
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.photo_size_select_small),
+            label: 'Sizing',
+          ),
+          NavigationDestination(icon: Icon(Icons.text_fields), label: 'Fonts'),
+          NavigationDestination(icon: Icon(Icons.devices), label: 'Device'),
+          NavigationDestination(icon: Icon(Icons.palette), label: 'Theme'),
+          NavigationDestination(
+            icon: Icon(Icons.extension),
+            label: 'Extensions',
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ============================================================================
+// Page 1: Responsive Sizing Demo
+// ============================================================================
+class ResponsiveSizingPage extends StatelessWidget {
+  const ResponsiveSizingPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.all(16.w),
+      children: [
+        Text(
+          'Responsive Sizing',
+          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+        ),
+        context.verticalSpacer(size: 16),
+
+        // Relative Width Example
+        _DemoCard(
+          title: 'Relative Width (.w)',
+          child: Column(
+            children: [
+              _SizeBox(width: 100.w, label: '100.w'),
+              SizedBox(height: 8.h),
+              _SizeBox(width: 200.w, label: '200.w'),
+              SizedBox(height: 8.h),
+              _SizeBox(width: 300.w, label: '300.w'),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Relative Height Example
+        _DemoCard(
+          title: 'Relative Height (.h)',
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _SizeBox(height: 50.h, label: '50.h'),
+              _SizeBox(height: 100.h, label: '100.h'),
+              _SizeBox(height: 150.h, label: '150.h'),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Width Fraction Example
+        _DemoCard(
+          title: 'Width Fraction (.wf)',
+          child: Column(
+            children: [
+              _SizeBox(width: 0.5.wf, label: '50% width'),
+              SizedBox(height: 8.h),
+              _SizeBox(width: 0.75.wf, label: '75% width'),
+              SizedBox(height: 8.h),
+              _SizeBox(width: 0.9.wf, label: '90% width'),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Screen Dimensions Info
+        _DemoCard(
+          title: 'Screen Dimensions',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _InfoRow(
+                'Width (pixels)',
+                context.widthInPixels.toStringAsFixed(0),
+              ),
+              _InfoRow(
+                'Height (pixels)',
+                context.heightInPixels.toStringAsFixed(0),
+              ),
+              _InfoRow(
+                'Diagonal (pixels)',
+                context.diagonalInPixels.toStringAsFixed(0),
+              ),
+              _InfoRow(
+                'Width (inches)',
+                '${context.widthInInches.toStringAsFixed(2)}"',
+              ),
+              _InfoRow(
+                'Height (inches)',
+                '${context.heightInInches.toStringAsFixed(2)}"',
+              ),
+              _InfoRow(
+                'Diagonal (inches)',
+                '${context.diagonalInInches.toStringAsFixed(2)}"',
+              ),
+              _InfoRow('PPI', context.pixelsPerInch.toStringAsFixed(0)),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ============================================================================
+// Page 2: Font Scaling Demo
+// ============================================================================
+class FontScalingPage extends StatelessWidget {
+  const FontScalingPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.all(16.w),
+      children: [
+        Text(
+          'Font Scaling',
+          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+        ),
+        context.verticalSpacer(size: 16),
+
+        // Scaled Font (.sp)
+        _DemoCard(
+          title: 'Scaled Font (.sp) - Diagonal-based',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('12.sp font size', style: TextStyle(fontSize: 12.sp)),
+              SizedBox(height: 8.h),
+              Text('14.sp font size', style: TextStyle(fontSize: 14.sp)),
+              SizedBox(height: 8.h),
+              Text('16.sp font size', style: TextStyle(fontSize: 16.sp)),
+              SizedBox(height: 8.h),
+              Text('18.sp font size', style: TextStyle(fontSize: 18.sp)),
+              SizedBox(height: 8.h),
+              Text('20.sp font size', style: TextStyle(fontSize: 20.sp)),
+              SizedBox(height: 8.h),
+              Text('24.sp font size', style: TextStyle(fontSize: 24.sp)),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Adaptive Font (.af)
+        _DemoCard(
+          title: 'Adaptive Font (.af) - Breakpoint-based',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('12.af font size', style: TextStyle(fontSize: 12.af)),
+              SizedBox(height: 8.h),
+              Text('14.af font size', style: TextStyle(fontSize: 14.af)),
+              SizedBox(height: 8.h),
+              Text('16.af font size', style: TextStyle(fontSize: 16.af)),
+              SizedBox(height: 8.h),
+              Text('18.af font size', style: TextStyle(fontSize: 18.af)),
+              SizedBox(height: 8.h),
+              Text('20.af font size', style: TextStyle(fontSize: 20.af)),
+              SizedBox(height: 8.h),
+              Text('24.af font size', style: TextStyle(fontSize: 24.af)),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Comparison
+        _DemoCard(
+          title: 'Comparison: .sp vs .af',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Size', style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('.sp', style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text('.af', style: TextStyle(fontWeight: FontWeight.bold)),
+                ],
+              ),
+              const Divider(),
+              _FontComparisonRow(16),
+              _FontComparisonRow(18),
+              _FontComparisonRow(20),
+              _FontComparisonRow(24),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ============================================================================
+// Page 3: Device Detection Demo
+// ============================================================================
+class DeviceDetectionPage extends StatelessWidget {
+  const DeviceDetectionPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.all(16.w),
+      children: [
+        Text(
+          'Device Detection',
+          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+        ),
+        context.verticalSpacer(size: 16),
+
+        // Device Type Detection
+        _DemoCard(
+          title: 'Material Design 3 Breakpoints',
+          child: Column(
+            children: [
+              _DeviceTypeIndicator(
+                label: 'Mobile',
+                isActive: context.isMobile,
+                description: '< 600dp',
+              ),
+              SizedBox(height: 12.h),
+              _DeviceTypeIndicator(
+                label: 'Tablet',
+                isActive: context.isTablet,
+                description: '600-840dp',
+              ),
+              SizedBox(height: 12.h),
+              _DeviceTypeIndicator(
+                label: 'Desktop',
+                isActive: context.isDesktop,
+                description: '≥ 840dp',
+              ),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Orientation
+        _DemoCard(
+          title: 'Orientation',
+          child: _DeviceTypeIndicator(
+            label: context.isLandscape ? 'Landscape' : 'Portrait',
+            isActive: true,
+            description: context.isLandscape
+                ? 'Width > Height'
+                : 'Height > Width',
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Adaptive Layout Example
+        _DemoCard(
+          title: 'Adaptive Layout Example',
+          child: context.isMobile
+              ? Column(
+                  children: [
+                    _AdaptiveBox('Mobile', Colors.orange),
+                    SizedBox(height: 8.h),
+                    _AdaptiveBox('Layout', Colors.orange),
+                  ],
+                )
+              : Row(
+                  children: [
+                    Expanded(
+                      child: _AdaptiveBox('Tablet/Desktop', Colors.green),
+                    ),
+                    SizedBox(width: 8.w),
+                    Expanded(child: _AdaptiveBox('Layout', Colors.green)),
+                  ],
+                ),
+        ),
+      ],
+    );
+  }
+}
+
+// ============================================================================
+// Page 4: Theme Integration Demo
+// ============================================================================
+class ThemeIntegrationPage extends StatelessWidget {
+  const ThemeIntegrationPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.all(16.w),
+      children: [
+        Text(
+          'Theme Integration',
+          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+        ),
+        context.verticalSpacer(size: 16),
+
+        // Color Scheme
+        _DemoCard(
+          title: 'Color Scheme (context.colorScheme)',
+          child: Wrap(
+            spacing: 8.w,
+            runSpacing: 8.h,
+            children: [
+              _ColorChip('Primary', context.colorScheme.primary),
+              _ColorChip('Secondary', context.colorScheme.secondary),
+              _ColorChip('Tertiary', context.colorScheme.tertiary),
+              _ColorChip('Error', context.colorScheme.error),
+              _ColorChip('Surface', context.colorScheme.surface),
+              _ColorChip('Background', context.backgroundColor),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Text Theme
+        _DemoCard(
+          title: 'Text Theme (context.textTheme)',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Display Large', style: context.textTheme.displayLarge),
+              SizedBox(height: 8.h),
+              Text('Headline Large', style: context.textTheme.headlineLarge),
+              SizedBox(height: 8.h),
+              Text('Title Large', style: context.textTheme.titleLarge),
+              SizedBox(height: 8.h),
+              Text('Body Large', style: context.textTheme.bodyLarge),
+              SizedBox(height: 8.h),
+              Text('Body Medium', style: context.textTheme.bodyMedium),
+              SizedBox(height: 8.h),
+              Text('Label Small', style: context.textTheme.labelSmall),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Theme Info
+        _DemoCard(
+          title: 'Theme Properties',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _InfoRow(
+                'Brightness',
+                context.brightness.toString().split('.').last,
+              ),
+              _InfoRow(
+                'Platform',
+                context.theme.platform.toString().split('.').last,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ============================================================================
+// Page 5: Extensions Showcase
+// ============================================================================
+class ExtensionsShowcasePage extends StatelessWidget {
+  const ExtensionsShowcasePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: EdgeInsets.all(16.w),
+      children: [
+        Text(
+          'Extension Methods',
+          style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold),
+        ),
+        context.verticalSpacer(size: 16),
+
+        // String Extensions
+        _DemoCard(
+          title: 'String Extensions',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _ExtensionDemo(
+                'isEmail()',
+                'test@example.com'.isEmail().toString(),
+              ),
+              _ExtensionDemo('capitalize()', 'hello world'.capitalize()),
+              _ExtensionDemo(
+                'toCamelCase()',
+                'hello world example'.toCamelCase(),
+              ),
+              _ExtensionDemo('reverse()', 'Flutter'.reverse()),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Double Extensions
+        _DemoCard(
+          title: 'Double Extensions',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _ExtensionDemo(
+                '3.14159.roundToDecimalPlaces(2)',
+                3.14159.roundToDecimalPlaces(2).toString(),
+              ),
+              _ExtensionDemo('0.85.toPercentage()', 0.85.toPercentage()),
+              _ExtensionDemo('5.0.isInteger()', 5.0.isInteger().toString()),
+              _ExtensionDemo(
+                '90.0.toRadians()',
+                90.0.toRadians().toStringAsFixed(4),
+              ),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Int Extensions
+        _DemoCard(
+          title: 'Int Extensions',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('3.times((i) => print(i))'),
+              const Text(
+                'Output: 0, 1, 2',
+                style: TextStyle(fontStyle: FontStyle.italic),
+              ),
+              SizedBox(height: 8.h),
+              const Text('3.timesReverse((i) => print(i))'),
+              const Text(
+                'Output: 2, 1, 0',
+                style: TextStyle(fontStyle: FontStyle.italic),
+              ),
+            ],
+          ),
+        ),
+
+        context.verticalSpacer(size: 16),
+
+        // Navigation & UI Helpers
+        _DemoCard(
+          title: 'Navigation & UI Helpers',
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  context.showSnackBar(
+                    const SnackBar(
+                      content: Text('Using context.showSnackBar()!'),
+                    ),
+                  );
+                },
+                child: const Text('Show SnackBar'),
+              ),
+              SizedBox(height: 8.h),
+              const Text('Other helpers:'),
+              const Text('• context.navigator'),
+              const Text('• context.focusScope'),
+              const Text('• context.scaffold'),
+              const Text('• context.horizontalSpacer()'),
+              const Text('• context.verticalSpacer()'),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ============================================================================
+// Helper Widgets
+// ============================================================================
+
+class _DemoCard extends StatelessWidget {
+  final String title;
+  final Widget child;
+
+  const _DemoCard({required this.title, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: EdgeInsets.all(16.w),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              title,
+              style: TextStyle(
+                fontSize: 16.sp,
+                fontWeight: FontWeight.bold,
+                color: context.colorScheme.primary,
+              ),
             ),
+            SizedBox(height: 12.h),
+            child,
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+    );
+  }
+}
+
+class _SizeBox extends StatelessWidget {
+  final double? width;
+  final double? height;
+  final String label;
+
+  const _SizeBox({this.width, this.height, required this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height ?? 40.h,
+      decoration: BoxDecoration(
+        color: context.colorScheme.primaryContainer,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        label,
+        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w500),
+      ),
+    );
+  }
+}
+
+class _InfoRow extends StatelessWidget {
+  final String label;
+  final String value;
+
+  const _InfoRow(this.label, this.value);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 4.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(label, style: TextStyle(fontSize: 14.sp)),
+          Text(
+            value,
+            style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _FontComparisonRow extends StatelessWidget {
+  final int size;
+
+  const _FontComparisonRow(this.size);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 4.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text('$size', style: TextStyle(fontSize: 14.sp)),
+          Text(
+            size.toDouble().sp.toStringAsFixed(1),
+            style: TextStyle(fontSize: 14.sp),
+          ),
+          Text(
+            size.toDouble().af.toStringAsFixed(1),
+            style: TextStyle(fontSize: 14.sp),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DeviceTypeIndicator extends StatelessWidget {
+  final String label;
+  final bool isActive;
+  final String description;
+
+  const _DeviceTypeIndicator({
+    required this.label,
+    required this.isActive,
+    required this.description,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(12.w),
+      decoration: BoxDecoration(
+        color: isActive
+            ? context.colorScheme.primaryContainer
+            : context.colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: isActive ? context.colorScheme.primary : Colors.transparent,
+          width: 2,
+        ),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            isActive ? Icons.check_circle : Icons.circle_outlined,
+            color: isActive
+                ? context.colorScheme.primary
+                : context.colorScheme.onSurfaceVariant,
+          ),
+          SizedBox(width: 12.w),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                    color: context.colorScheme.onSurfaceVariant,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _AdaptiveBox extends StatelessWidget {
+  final String text;
+  final Color color;
+
+  const _AdaptiveBox(this.text, this.color);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 60.h,
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.2),
+        border: Border.all(color: color, width: 2),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: 16.sp,
+          fontWeight: FontWeight.bold,
+          color: color,
+        ),
+      ),
+    );
+  }
+}
+
+class _ColorChip extends StatelessWidget {
+  final String label;
+  final Color color;
+
+  const _ColorChip(this.label, this.color);
+
+  @override
+  Widget build(BuildContext context) {
+    return Chip(
+      avatar: CircleAvatar(backgroundColor: color),
+      label: Text(label),
+    );
+  }
+}
+
+class _ExtensionDemo extends StatelessWidget {
+  final String method;
+  final String result;
+
+  const _ExtensionDemo(this.method, this.result);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 4.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            method,
+            style: TextStyle(
+              fontSize: 12.sp,
+              fontFamily: 'monospace',
+              color: context.colorScheme.primary,
+            ),
+          ),
+          Text(
+            '→ $result',
+            style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
     );
   }
