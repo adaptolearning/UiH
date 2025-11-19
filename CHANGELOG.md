@@ -1,8 +1,8 @@
 # CHANGELOG
 
-### [1.0.6] - 2025-01-19 Release
+## [1.0.6] - 2025-01-19 Release
 
-#### Critical Bug Fixes
+### Critical Bug Fixes
 
 * **CRITICAL**: Fixed `roundToDecimalPlaces()` bug in `double_ext.dart` - was using multiplication instead of `pow()` function, causing incorrect rounding results.
 * Added `dart:math` import for `pow()` function and `pi` constant.
@@ -78,7 +78,7 @@
 * Production-ready code quality
 * Version bumped to `1.0.6`
 
-### [1.0.5] - 2023-06-11 Release
+## [1.0.5] - 2023-06-11 Release
 
 * Task: added `textTheme` Instance.
 * Task: added `colorScheme` Instance.
@@ -95,7 +95,7 @@
 * Task: `README.md` updated.
 * Task: version bumped to `1.0.5`.
 
-### [1.0.4] - 2023-05-31 Release
+## [1.0.4] - 2023-05-31 Release
 
 * Task: added `RelativeFontSize` functionality.
 * Task: added `RelativeFontSizeWithBreakPoint` functionality.
@@ -103,43 +103,43 @@
 * Task: added initial unit_test for future reference.
 * Task: version bumped to `1.0.4`.
 
-### [1.0.3] - 2022-10-26 Release
+## [1.0.3] - 2022-10-26 Release
 
 * Task: Scaffold Messenger section Supporting `showSnackBar`.
 * Task: added example.
 * Task: version bumped to `1.0.3`.
 
-### [1.0.2] - 2022-10-26 Release
+## [1.0.2] - 2022-10-26 Release
 
 * Task: Theme section added with current variables as following : `theme`, `backgroundColor`, `typography`, `brightness`.
 * Task: added example.
 * Task: .pubignore introduced.
 * Task: version bumped to `1.0.2`.
 
-### [1.0.1] - 2022-10-25 Release
+## [1.0.1] - 2022-10-25 Release
 
 * Task: added bool identifiers such as `isMobile`, `isTablet`, and `isDesktop`.
 * Task: added example.
 * Task: version bumped to `1.0.1`.
 
-### [1.0.0] - 2022-10-21 Release
+## [1.0.0] - 2022-10-21 Release
 
 * Task: removed old code implementation.
 * Task: added extension-based implementation.
 * Task: added example.
 * Task: version bumped to `1.0.0`.
 
-### [0.1.2] - 2021-05-23 Release
+## [0.1.2] - 2021-05-23 Release
 
 * Task: Added Vertical and Horizontal Spacer widget support.
 * Task: Meta Data updated.
 
-### [0.1.1] - 2021-03-14 Release
+## [0.1.1] - 2021-03-14 Release
 
 * Task: README updated.
 * Task: Meta Data updated.
 
-### [0.1.0] - 2021-03-14 Release
+## [0.1.0] - 2021-03-14 Release
 
 * Task: Initial release.
 * Task: License added.
