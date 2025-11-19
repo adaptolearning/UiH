@@ -735,7 +735,7 @@ If UiH helps you build better Flutter apps, give it a star on [GitHub](https://g
 ---
 
 <p align="center">
-  Made with ❤️ by the princeteck
+  Made with ❤️ by the <a href="https://github.com/princeteck">princeteck</a>
 </p>
 
 <p align="center">
